@@ -2,7 +2,7 @@
     /* Database credentials */
     $DB_SERVER = 'localhost';
     $DB_USERNAME = 'root';
-    $DB_PASSWORD = '';
+    $DB_PASSWORD = 'root';
     $DB_NAME = 'demo';
  
     /* Attempt to connect to MySQL database */

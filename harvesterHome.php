@@ -12,42 +12,59 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 require_once "./db/config.php";
  
 // Define variables and initialize with empty values
-$companyName = "";
+$harvesterEa = "";
+$lotId = "";
 $lotCoordinates = "";
-$plantBrand = "";
-$certifiyingAgency = "";
 $variety = "";
+$lotAtribute = "";
+$yield = "";
+$harvesterDate = "";
+$chemicalAppli = "";
+$dateSold = "";
+$manufactuerEa = "";
+$comFarmerId = "";
 $name_err = $address_err = $salary_err = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    $companyName = $_POST['companyName'];
+    $harvesterEa = $_POST['harvesterEa'];
+    $lotId = $_POST['lotId'];
     $lotCoordinates = $_POST['lotCoordinates'];
-    $plantBrand = $_POST['plantBrand'];
-    $certifiyingAgency = $_POST['certifiyingAgency'];
     $variety = $_POST['variety'];
+    $lotAtribute = $_POST['lotAtribute'];
+    $yield = $_POST['yield'];
+    $harvesterDate = $_POST['harvesterDate'];
+    $chemicalAppli = $_POST['chemicalAppli'];
+    $dateSold = $_POST['dateSold'];
+    $manufactuerEa = $_POST['manufactuerEa'];
+    $comFarmerId = $_POST['comFarmerId'];
     
     // Check input errors before inserting in database
-    // if(empty($name_err) && empty($address_err) && empty($salary_err)){
         // Prepare an insert statement
-        $sql = "INSERT INTO seed_company(company_name, lot_coordinates, plant_brand, certifiying_agency, variety) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO harvester (harvester_ea, lot_id, lot_coordinates, variety, lot_attribute, yield, harvester_date, chemical_application, date_sold, manufactuer_ea, company_famer_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssss", $param_comname, $param_lotCoor, $param_plantBrand, $param_cerAge, $param_variety);
-
+            mysqli_stmt_bind_param($stmt, "ssssssssssi", $param_haveEa, $lotId, $lotCoordinates, $param_variety, $param_lotAttr, $param_yield, $param_haveDate, $param_chemicalApp, $param_dateSold, $param_manuFacEa, $param_comFarmId);
+            
             // Set parameters
-            $param_comname = $companyName;
-            $param_lotCoor = $lotCoordinates;
-            $param_plantBrand = $plantBrand;
-            $param_cerAge = $certifiyingAgency;
+            $param_haveEa = $harvesterEa;
+            $param_lotid = $lotId;
+            $param_lotCoodi = $lotCoordinates;
             $param_variety = $variety;
+            $param_lotAttr = $lotAtribute;
+            $param_yield = $yield;
+            $param_haveDate = $harvesterDate;
+            $param_chemicalApp = $chemicalAppli;
+            $param_dateSold = $dateSold;
+            $param_manuFacEa = $manufactuerEa;
+            $param_comFarmId = $comFarmerId;
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Records created successfully. Redirect to landing page
-                header("location: welcome.php");
+                header("location: harvesterHome.php");
                 exit();
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -56,7 +73,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
          
         // Close statement
         mysqli_stmt_close($stmt);
-    // }
     
     // Close connection
     mysqli_close($link);
@@ -81,8 +97,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <h3><a href="#">Trust Coconut</a></h3>
             </div>
             <div class="navigations">
-            <a href="#">Seed Company</a>
-            <a href="harvesterHome.php">Harvester</a>
+            <a href="welcome.php">Seed Company</a>
+            <a href="#">Harvester</a>
             <a href="ManusfacterHome.php">Manusfacter</a>
             </div>
             <div class="signUpDiv">
@@ -93,30 +109,43 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </div>
     <div class="formUpperContainer">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="formWrap" method="POST">
-           <!-- <h1>Welcome to main page</h1> -->
             <div class="row g-3 p-3">
                 <div class="col">
-                    <input type="text" class="form-text form-control" placeholder="Company Name" aria-label="First name" name="companyName">
+                    <input type="text" class="form-control" placeholder="harvester_ea" aria-label="First name" name="harvesterEa">
                 </div>
-            </div>
-            <div class="row g-3 p-3">
                 <div class="col">
-                        <input type="text" class="form-control" placeholder="Lot Coordinates" aria-label="Last name" name="lotCoordinates">
+                    <input type="text" class="form-control" placeholder="Lot Id" aria-label="Last name" name="lotId">
                 </div>
-            </div>
-            <div class="row g-3 p-3">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Plant Brand" aria-label="Last name" name="plantBrand">
+                    <input type="text" class="form-control" placeholder="Plant Coordinates" aria-label="Last name" name="lotCoordinates">
                 </div>
-            </div>
-            <div class="row g-3 p-3">
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Certifiying Agency" aria-label="First name" name="certifiyingAgency">
-                </div>   
             </div>
             <div class="row g-3 p-3">
                 <div class="col">
                     <input type="text" class="form-control" placeholder="Veriety" aria-label="Last name" name="variety">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Lot Attribute" aria-label="First name" name="lotAtribute">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Yield" aria-label="First name" name="yield">
+                </div>
+                <div class="col">
+                    <input type="date" class="form-control" placeholder="harvester Date" aria-label="First name" name="harvesterDate">
+                </div>
+            </div>
+            <div class="row g-3 p-3">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Chemical Application" aria-label="Last name" name="chemicalAppli">
+                </div>
+                <div class="col">
+                    <input type="date" class="form-control" placeholder="Date Sold" aria-label="First name" name="dateSold">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Manufactuer Ea" aria-label="First name" name="manufactuerEa">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Company Famer" aria-label="First name" name="comFarmerId">
                 </div>
             </div>
             <div class="btn-group p-4" role="group" aria-label="Basic mixed styles example">
@@ -133,39 +162,51 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     require_once "./db/config.php";
                     
                     // Attempt select query execution
-                    $sql = "SELECT * FROM seed_company";
+                    $sql = "SELECT * FROM harvester";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo '<table class="table table-bordered table-striped">';
                                 echo "<thead>";
                                     echo "<tr>";
                                         echo "<th>#</th>";
-                                        echo "<th>Company Name</th>";
-                                        echo "<th>Lot Coordinates</th>";
-                                        echo "<th>Plant Brand</th>";
-                                        echo "<th>Certifiying Agency</th>";
+                                        echo "<th>Harvester Ea</th>";
+                                        echo "<th>Lot Id</th>";
+                                        echo "<th>Plant Coordinates</th>";
                                         echo "<th>Variety</th>";
+                                        echo "<th>Lot Attribute</th>";
+                                        echo "<th>Yield</th>";
+                                        echo "<th>Harvester Date</th>";
+                                        echo "<th>Chemical Application</th>";
+                                        echo "<th>Date Sold</th>";
+                                        echo "<th>Manufactuer Ea</th>";
+                                        echo "<th>Company Famer</th>";
                                         echo "<th>Action</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
-                                        echo "<td>" . $row['company_famer_id'] . "</td>";
-                                        echo "<td>" . $row['company_name'] . "</td>";
+                                        echo "<td>" . $row['field_id'] . "</td>";
+                                        echo "<td>" . $row['harvester_ea'] . "</td>";
+                                        echo "<td>" . $row['lot_id'] . "</td>";
                                         echo "<td>" . $row['lot_coordinates'] . "</td>";
-                                        echo "<td>" . $row['plant_brand'] . "</td>";
-                                        echo "<td>" . $row['certifiying_agency'] . "</td>";
                                         echo "<td>" . $row['variety'] . "</td>";
+                                        echo "<td>" . $row['lot_attribute'] . "</td>";
+                                        echo "<td>" . $row['yield'] . "</td>";
+                                        echo "<td>" . $row['harvester_date'] . "</td>";
+                                        echo "<td>" . $row['chemical_application'] . "</td>";
+                                        echo "<td>" . $row['date_sold'] . "</td>";
+                                        echo "<td>" . $row['manufactuer_ea'] . "</td>";
+                                        echo "<td>" . $row['company_famer_id'] . "</td>";
                                         echo "<td>";
-                                            echo '<a href="updateSeedCompany.php?id='. $row['company_famer_id'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                            echo '<a href="deleteSeedCompany.php?id='. $row['company_famer_id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                            echo '<a href="updateHarvester.php?id='. $row['field_id'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                            echo '<a href="deleteHarvester.php?id='. $row['field_id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                         echo "</td>";
                                     echo "</tr>";
                                 }
                                 echo "</tbody>";                            
                             echo "</table>";
-                    //         // Free result set
+                            // Free result set
                             mysqli_free_result($result);
                         } else{
                             echo '<div class="alert alert-danger"><em>No records were found.</em></div>';
@@ -174,7 +215,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         echo "Oops! Something went wrong. Please try again later.";
                     }
  
-                    // // Close connection
+                    // Close connection
                     mysqli_close($link);
                     ?>
                 </div>

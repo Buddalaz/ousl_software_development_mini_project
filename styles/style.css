@@ -1,0 +1,388 @@
+:root {
+  --textColor: rgb(44, 44, 44);
+}
+
+*,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  scroll-behavior: smooth;
+  font: 14px sans-serif; 
+}
+  
+h1 {
+  font-family: 'Courier New', Courier, monospace;
+}
+  
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  /* min-height: 100vh; */
+}
+  
+.navBar div {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  margin: 20px 50px;
+}
+  
+.navBar {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  border-bottom: solid thin rgb(0, 100, 8);
+}
+  
+.logo {
+  padding: 10px 0;
+}
+  
+.logo a {
+  text-decoration: none;
+  color: rgb(44, 44, 44);
+}
+  
+.navigations a {
+  padding: 10px 0;
+  text-decoration: none;
+  color: rgb(44, 44, 44);
+}
+  
+.signUpDiv a {
+  padding: 10px 20px;
+  text-decoration: none;
+}
+  
+.logIn {
+  background-color: rgb(255, 255, 255);
+  color: rgb(44, 44, 44);
+  border: 1px solid rgb(8, 135, 173);
+}
+  
+.signUp {
+  background-color: rgb(8, 135, 173);
+  color: rgb(255, 255, 255);
+}
+  
+.signUp:hover {
+  background-color: rgb(73, 73, 73);
+}
+  
+.logIn:hover {
+  background-color: rgb(73, 73, 73);
+  color: white;
+}
+  
+.titleText {
+  display: flex;
+  flex-direction: column;
+  column-gap: 22px;
+  margin: 20px 50px;
+  row-gap: 17px;
+  margin-bottom: 2px;
+}
+
+.titleText h1 {
+  font-size: 2rem;
+}
+  
+.mainText {
+  color: rgb(29, 27, 27);
+}
+
+.subText {
+  color: rgb(71, 71, 71);
+}
+
+.poster {
+  overflow: hidden;
+  position: relative;
+}
+
+img {
+  background-repeat: no-repeat;
+  width: 100vw;
+}
+
+.wrapper{
+  width: 709px;
+  margin: 0 auto;
+}
+
+
+table tr td:last-child{
+  width: 120px;
+}
+
+/*-------------------------- 2nd Section ---------------------------------*/
+
+.itemContainer {
+  margin: 40px 50px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  border-top: solid 3px rgb(0, 100, 8);
+  border-bottom: solid 1px rgb(0, 100, 8);
+  color: var(--textColor);
+}
+.soldCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  border-top: solid 3px rgb(0, 100, 8);
+  border-bottom: solid 1px rgb(0, 100, 8);
+  color: var(--textColor);
+}
+
+.soldCard::after {
+  content: 'Available';
+  height: 20px;
+  width: auto;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(38, 150, 23);
+}
+.rentCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  border-top: solid 3px rgb(0, 100, 8);
+  border-bottom: solid 1px rgb(0, 100, 8);
+  color: var(--textColor);
+}
+
+.rentCard::after {
+  content: 'Available';
+  height: 20px;
+  width: auto;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(158, 192, 33);
+}
+.leaseCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  border-top: solid 3px rgb(0, 100, 8);
+  border-bottom: solid 1px rgb(0, 100, 8);
+  color: var(--textColor);
+}
+
+.leaseCard::after {
+  content: 'Available';
+  height: 20px;
+  width: auto;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(150, 120, 23);
+}
+
+.card:hover {
+  box-shadow: 1px 3px 5px 5px #d8d8d8;
+}
+
+.card img {
+  width: 250px;
+}
+
+.card p {
+  font-size: small;
+}
+
+.price {
+  font-weight: 700;
+  color: var(--textColor);
+}
+
+.price::before {
+  content: 'LKR';
+}
+  
+/*-------------------------- 3rd Section ---------------------------------*/
+
+.cardContainer {
+  margin: 40px auto 80px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.infoCards {
+  width: 200px;
+  padding: 20px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.infoCards img {
+  width: 160px;
+}
+
+.infoCards a {
+  color: rgb(44, 44, 44);
+  font-size: small;
+}
+
+/*-------------form------------------------------*/
+
+.formSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 550px;
+}
+
+.formDiv {
+  border: solid 1px black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  gap: 20px;
+}
+.formDivLogin {
+  border: none;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  gap: 20px;
+  height: 420px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* .labelText {
+} */
+
+input {
+  height: 30px;
+  width: 230px;
+}
+
+button {
+  height: 30px;
+  width: 70px;
+  padding: auto;
+}
+.loginButton {
+  height: 40px;
+  width: 100%;
+  padding: auto;
+  background-color: black;
+  color: rgb(255, 255, 255);
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.buttonsLogin {
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.loginTitle{
+
+  padding-bottom: 20px;
+
+}
+/*-------------------------- footer Section ---------------------------------*/
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 60px;
+  background-color: rgb(44, 44, 44);
+  color: rgb(230, 230, 230);
+  margin-top: auto;
+}
+
+.footerDivs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footerDivs p {
+  font-size: small;
+}
+
+footer a {
+  font-size: small;
+  color: rgb(223, 223, 223);
+}
+
+.contact a {
+  text-decoration: none;
+  color: white;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
+.formUpperContainer{
+
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+
+}
+
+.formWrap{
+  width: 800px;
+  text-align: left !important;
+
+}
+
+@media only screen and (max-width: 860px) {
+  .navBar {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .navBar {
+    flex-direction: column;
+  }
+
+  .itemContainer {
+    flex-direction: column;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+  
