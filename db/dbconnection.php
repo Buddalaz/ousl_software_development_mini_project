@@ -4,7 +4,7 @@
     $host = 'localhost';
     $username = 'root';
     $pass = 'root';
-    $db = '';
+    $db = 'salonpramod';
 
     $connection = mysqli_connect($host,$username,$pass,$db);
 
