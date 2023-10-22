@@ -50,10 +50,10 @@ if (isset($_POST['submit'])) {
     </ul>
     <?php if (isset($_SESSION['salonpramodID']) && strlen($_SESSION['salonpramodID']) > 0) { ?>
       <ul>
-        <li><a href="booking-appointment.html">Booking</a></li>
+        <li><a href="booking-appointment.php">Booking</a></li>
       </ul>
       <ul>
-        <li><a href="view-bookings.html">View Bookings</a></li>
+        <li><a href="view-bookings.php">View Bookings</a></li>
       </ul>
       <ul>
         <li><a href="logout.php">Logout</a></li>
@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
         <li><a href="#">Login</a></li>
       </ul>
       <ul>
-        <li><a href="admin/index.html">Admin</a></li>
+        <li><a href="admin/index.php">Admin</a></li>
       </ul>
     <?php } ?>
   </div>

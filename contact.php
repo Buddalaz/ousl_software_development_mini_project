@@ -1,5 +1,29 @@
 <?php
 session_start();
+
+include('db/dbconnection.php');
+
+if (isset($_POST['submit'])) {
+    //variable init form user input data
+    $fname = $_POST['fName'];
+    $lname = $_POST['lName'];
+    $mobileNumber = $_POST['mobileNumber'];
+    $email = $_POST['email'];
+    $msg = $_POST['msg'];
+
+    $ret = mysqli_query($connection, "insert into tblcontact(FirstName, LastName, Phone, Email, Message) value('$fname', '$lname','$mobileNumber', '$email', '$msg')");
+
+    // $result = mysqli_fetch_array($ret);
+
+    if ($ret) {
+        echo "<script>alert('Thank you for contact us.');</script>";
+        // header('location:index.php');
+    } else {
+        echo "<script>alert('Something Went Wrong. Please try again.');</script>";
+    }
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,10 +54,10 @@ session_start();
         </ul>
         <?php if (isset($_SESSION['salonpramodID']) && strlen($_SESSION['salonpramodID']) > 0) { ?>
             <ul>
-                <li><a href="booking-appointment.html">Booking</a></li>
+                <li><a href="booking-appointment.php">Booking</a></li>
             </ul>
             <ul>
-                <li><a href="view-bookings.html">View Bookings</a></li>
+                <li><a href="view-bookings.php">View Bookings</a></li>
             </ul>
             <ul>
                 <li><a href="logout.php">Logout</a></li>
@@ -43,7 +67,7 @@ session_start();
                 <li><a href="login.php">Login</a></li>
             </ul>
             <ul>
-                <li><a href="admin/index.html">Admin</a></li>
+                <li><a href="admin/index.php">Admin</a></li>
             </ul>
         <?php } ?>
     </div>
@@ -77,13 +101,13 @@ session_start();
                 </ul>
             </section>
             <section>
-                <form action="" method="post">
-                    <input type="text" name="" id="" placeholder="First Name" class="con-input"><br />
-                    <input type="text" name="" id="" placeholder="Last Name" class="con-input"><br />
-                    <input type="text" name="" id="" placeholder="Phone" class="con-input"><br />
-                    <input type="text" name="" id="" placeholder="Email" class="con-input"><br />
-                    <input type="text" name="" id="" placeholder="Message" class="con-input"><br />
-                    <input type="button" value="Submith" class="con-btn" onclick="clickConBtn()">
+                <form action="contact.php" method="POST">
+                    <input type="text" name="fName" placeholder="First Name" class="con-input"><br />
+                    <input type="text" name="lName" placeholder="Last Name" class="con-input"><br />
+                    <input type="text" name="mobileNumber" placeholder="Phone" class="con-input"><br />
+                    <input type="text" name="email" placeholder="Email" class="con-input"><br />
+                    <input type="text" name="msg" placeholder="Message" class="con-input"><br />
+                    <input type="submit" value="Submith" name="submit" class="con-btn">
                 </form>
             </section>
         </div>

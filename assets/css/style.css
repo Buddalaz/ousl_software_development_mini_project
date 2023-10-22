@@ -300,6 +300,31 @@ footer a {
   height: auto;
 }
 
+/*-------------------------- view-bookings Page ---------------------------------*/
+.viewBookingContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Add text-align: center to center the content within the section */
+}
+
+.tblContent {
+  padding: 10px;
+}
+
+.tbl-ste {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  /* width: 100%; */
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
 /*-------------------------- admin/dashboard Page ---------------------------------*/
 .wrapper .sidebar {
   background: rgb(5, 68, 104);
