@@ -11,12 +11,13 @@
     $userName = $_POST['userName'];
     $password = $_POST['password'];
 
-    $query = mysqli_query($connection, "select AdminId from tbladmin where UserName='$userName' AND Password='$password'");
+    $query = mysqli_query($connection, "select AdminId,AdminName from tbladmin where UserName='$userName' AND Password='$password'");
 
     $ret = mysqli_fetch_array($query);
 
     if ($ret > 0) {
       $_SESSION['salonpramodID'] = $ret['AdminId'];
+      $_SESSION['adminName'] = $ret['AdminName'];
       header('location:dashboard.php');
     } else {
       echo "<script>alert('Invalid Details.');</script>";
@@ -40,7 +41,9 @@
       <li><a href="#"></a></li>
     </ul>
     <ul>
-      <li><h1 style="color: white;">Admin Panel Of the Salon Pramod</h1></li>
+      <li>
+        <h1 style="color: white;">Admin Panel Of the Salon Pramod</h1>
+      </li>
     </ul>
   </div>
   <div class="loginContainer">

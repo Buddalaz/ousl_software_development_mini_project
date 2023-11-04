@@ -18,15 +18,15 @@
                 <th>Remark</th>
                 <th>Status</th>
                 <th>Remark Date & Time</th>
-                <th>Action</th>
+                <th style="padding: 5px;">Action</th>
             </tr>
             <tr>
                 <?php
-                $userid = $_SESSION['salonpramodID'];
-                $query = mysqli_query($connection, "SELECT tu.FirstName,tb.AptDate,tb.AptTime,tb.Message,tb.BookingDate,tb.Remark,tb.Status,tb.RemarkDate FROM tblbookings AS tb INNER JOIN tbluser AS tu on tb.UserID = tu.UserID");
+                $query = mysqli_query($connection, "SELECT tb.BookId AS bid,tu.FirstName,tb.AptDate,tb.AptTime,tb.Message,tb.BookingDate,tb.Remark,tb.Status,tb.RemarkDate FROM tblbookings AS tb INNER JOIN tbluser AS tu on tb.UserID = tu.UserID");
                 $cnt = 1;
                 while ($row = mysqli_fetch_array($query)) { ?>
             <tr>
+                <!-- <td><?php echo $row['bid']; ?></td> -->
                 <td><?php echo $cnt; ?></td>
                 <td><?php echo $row['FirstName']; ?></td>
                 <td><?php echo $row['AptDate']; ?></td>
@@ -51,8 +51,8 @@
                     ?> </td>
                 <td><?php echo $row['RemarkDate'] ?></td>
                 <td>
-                    <span class="icon"><i class="fas fa-user-shield"></i></span>
-                    <span class="icon"><i class="fas fa-user-shield"></i></span>
+                    <a href="approveBookings.php?bid=<?php echo $row['bid']; ?>" class="icon"><i class="fa-solid fa-check"></i></a>
+                    <a href="rejectBooking.php?bid=<?php echo $row['bid']; ?>" class="icon"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
             </tr><?php $cnt = $cnt + 1;
                 } ?>

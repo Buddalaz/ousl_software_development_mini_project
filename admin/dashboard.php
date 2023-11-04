@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $adminUserName = $_SESSION['adminName'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,12 +19,12 @@
             <div class="profile">
                 <img src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg"
                     alt="profile_picture">
-                <h3>Anamika Roy</h3>
+                <h3><?php echo $adminUserName; ?></h3>
                 <p>Welcome Admin</p>
             </div>
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="viewDashboardContent.php">
                         <span class="icon"><i class="fas fa-desktop"></i></span>
                         <span class="item">My Dashboard</span>
                     </a>
@@ -68,9 +69,7 @@
                     </a>
                 </div>
             </div>
-            <div class="container">
-                <h1>defult content</h1>
-            </div>
+            <div class="container"></div>
         </div>
     </div>
     <script>

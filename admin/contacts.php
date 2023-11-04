@@ -20,8 +20,8 @@
             </tr>
             <tr>
                 <?php
-                $userid = $_SESSION['salonpramodID'];
-                $query = mysqli_query($connection, "SELECT tc.FirstName,tc.LastName,tc.Phone,tc.Email,tc.Message,tc.EnquiryDate FROM tblcontact AS tc");
+                // $userid = $_SESSION['salonpramodID'];
+                $query = mysqli_query($connection, "SELECT tc.ID AS conId,tc.FirstName,tc.LastName,tc.Phone,tc.Email,tc.Message,tc.EnquiryDate FROM tblcontact AS tc");
                 $cnt = 1;
                 while ($row = mysqli_fetch_array($query)) { ?>
             <tr>
@@ -35,7 +35,8 @@
                     <p><?php echo $row['EnquiryDate']; ?></p>
                 </td>
                 <td>
-                    <span class="icon"><i class="fas fa-user-shield"></i></span>
+                    <!-- <span class="icon"><i class="fas fa-user-shield"></i></span> -->
+                    <a href="deleteContacts.php?conId=<?php echo $row['conId']; ?>" class="icon"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
             </tr><?php $cnt = $cnt + 1;
                 } ?>
